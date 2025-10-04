@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigmo - Digital Currency for Everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            background: #fff;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #008cff;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #008cff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: 40px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .btn-outline {
+            border: 2px solid #333;
+            background: transparent;
+            color: #333;
+        }
+
+        .btn-outline:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: #008cff;
+            color: white;
+            border: 2px solid #008cff;
+        }
+
+        .btn-primary:hover {
+            background: #0077d9;
+            border-color: #0077d9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 140, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 100px 60px;
+            align-items: center;
+            background: linear-gradient(135deg, #e8f4ff 0%, #f0f9ff 100%);
+            min-height: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hero-content .learn-more {
+            color: #008cff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .hero-content .disclaimer {
+            font-size: 12px;
+            color: #666;
+            margin-top: 25px;
+        }
+
+        .qr-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .qr-content {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .qr-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .qr-text .divider {
+            color: #999;
+            margin: 8px 0;
+        }
+
+        .qr-text a {
+            color: #008cff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hero-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .ca-text {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            word-break: break-all;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 60px;
+            background: #fff;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 80px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 25px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .feature-content {
+            padding: 40px 30px;
+        }
+
+        .feature-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .feature-content a {
+            color: #008cff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .feature-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Crypto Section */
+        .crypto-section {
+            padding: 120px 60px;
+            background: #fff;
+        }
+
+        .crypto-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .crypto-content h2 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .crypto-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 35px;
+        }
+
+        .crypto-content .disclaimer {
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .crypto-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .crypto-image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            background: #f8f8f8;
+            padding: 60px 60px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #008cff;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #008cff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #ddd;
+            padding-top: 30px;
+            margin-top: 30px;
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-meta-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-meta a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-meta a:hover {
+            color: #008cff;
+        }
+
+        .footer-disclaimer {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .footer-disclaimer a {
+            color: #008cff;
+            text-decoration: none;
+        }
+
+        /* Card Designer Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #666;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #008cff;
+        }
+
+        .card-designer-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .designer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* Credit Card Preview */
+        .card-preview-container {
+            position: sticky;
+            top: 20px;
+        }
+
+        .credit-card {
+            width: 100%;
+            aspect-ratio: 1.586;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .card-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #drawingCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .card-chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #f4e5c2 0%, #d4af37 100%);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .card-number {
+            font-size: 22px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            margin: 15px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .card-holder,
+        .card-expiry {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .card-label {
+            font-size: 10px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-value {
+            font-size: 16px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 20px;
+            font-weight: 700;
+            z-index: 4;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Drawing Canvas */
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1.586;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .control-group input[type="text"],
+        .control-group input[type="file"] {
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .control-group input:focus {
+            outline: none;
+            border-color: #008cff;
+        }
+
+        .color-brush-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .color-picker-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .color-picker-group input[type="color"] {
+            width: 100%;
+            height: 50px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .brush-size-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .brush-size-group input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #ddd;
+            outline: none;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .action-btn-primary {
+            background: #008cff;
+            color: white;
+            border-color: #008cff;
+        }
+
+        .action-btn-primary:hover {
+            background: #0077d9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 140, 255, 0.3);
+        }
+
+        .action-btn-secondary {
+            background: transparent;
+            color: #333;
+            border-color: #333;
+        }
+
+        .action-btn-secondary:hover {
+            background: #333;
+            color: white;
+        }
+
+        .action-btn-danger {
+            background: transparent;
+            color: #fa414b;
+            border-color: #fa414b;
+        }
+
+        .action-btn-danger:hover {
+            background: #fa414b;
+            color: white;
+        }
+
+        .gradient-presets {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gradient-preset {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-preset:hover {
+            transform: scale(1.05);
+            border-color: #008cff;
+        }
+
+        .gradient-preset.active {
+            border-color: #008cff;
+            box-shadow: 0 5px 15px rgba(0, 140, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 60px 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 56px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .crypto-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 30px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .crypto-content h2 {
+                font-size: 42px;
+            }
+
+            .features h2 {
+                font-size: 36px;
+            }
+
+            .footer-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .designer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 30px;
+            }
+
+            .card-designer-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">nigmo</a>
+        <nav>
+            <a href="#">Send & Receive</a>
+            <a href="#">Pay with Nigmo</a>
+            <a href="#">Nigmo for Business</a>
+            <a href="#">Help Center</a>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-primary" id="connectWallet">Connect Wallet</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pay friends. Pay for everything.</h1>
+            <p>Easily send money to your friends and pay for everything* you want online, in-store, and in apps with your Nigmo account.</p>
+
+            <div class="qr-section">
+                <div class="qr-content">
+                    <div class="qr-code">
+                        <img src="qr.png" alt="QR Code">
+                    </div>
+                    <div class="qr-text">
+                        <h3>Scan to download the Nigmo app</h3>
+                        <div class="divider">or</div>
+                        <a href="#">Create an account</a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="disclaimer">*Purchase restrictions apply</p>
+        </div>
+
+        <div class="hero-image">
+            <img src="nigmo.jpg" alt="Nigmo Coin">
+            <div class="ca-text">CA: 0x1234567890abcdef</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Nigmo everything, online and in-store.</h2>
+        <p class="features-subtitle">*Purchase restrictions apply.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="3.png" alt="The Nigmo Debit Card">
+                <div class="feature-content">
+                    <h3>The Nigmo Debit Card.</h3>
+                    <p>With the Nigmo Debit Card, you can instantly pay for whatever you want with the money in your Nigmo balance and earn up to 5% cash back* from some of your fave brands. There is no monthly fee or minimum balance.</p>
+                    <a href="#">Get the Nigmo Debit Card</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <img src="2.png" alt="Checkout with Nigmo">
+                <div class="feature-content">
+                    <h3>Checkout with Nigmo.</h3>
+                    <p>Connect your Nigmo account to thousands of apps and websites and quickly check out using your Nigmo balance* or a linked payment method.</p>
+                    <a href="#">Ways to pay</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <img src="4.png" alt="The Nigmo Credit Card">
+                <div class="feature-content">
+                    <h3>The Nigmo Credit Card.</h3>
+                    <p>Earn up to 3% cash back on eligible purchases with the Nigmo Visa® Credit Card.* There's no annual fee,* no limit to the cash back you can earn, and no impact to your credit score if declined.*</p>
+                    <a href="#">Apply now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crypto Section -->
+    <section class="crypto-section">
+        <div class="crypto-container">
+            <div class="crypto-content">
+                <h2>Buy crypto</h2>
+                <p>Get started with as little as $1.‡ Buy, track, transfer, and sell crypto through the Nigmo app.</p>
+                <a href="#" class="btn btn-outline">Learn more</a>
+                <p class="disclaimer">‡ Minimum purchase amount may vary.</p>
+            </div>
+
+            <div class="crypto-image">
+                <img src="last.png" alt="Buy crypto with Nigmo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <span class="footer-logo">nigmo</span>
+
+            <div class="footer-links">
+                <a href="#">Help Center</a>
+                <a href="#">Trust & safety</a>
+                <a href="#">Our fees</a>
+                <a href="#">Why Nigmo</a>
+                <a href="#">Contact us</a>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-meta">
+                    <div class="footer-meta-links">
+                        <a href="#">About us</a>
+                        <a href="#">Jobs</a>
+                        <a href="#">Media inquiries</a>
+                    </div>
+                    <div class="footer-meta-links">
+                        <a href="#">Accessibility</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Privacy</a>
+                        <a href="#">Cookies</a>
+                    </div>
+                </div>
+
+                <div class="footer-disclaimer">
+                    <p>© 2025 Nigmo. Nigmo is a service of Nigmo Solutions, a licensed provider of money transfer services (NMLS ID: XXXXXXX). All money transmission is provided by Nigmo Solutions pursuant to <a href="#">licenses</a>. © 2025 Nigmo.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Card Designer Modal -->
+    <div id="cardDesignerModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeCardDesigner()">&times;</button>
+            <h2 class="card-designer-title">Design Your Nigmo Card</h2>
+
+            <div class="designer-grid">
+                <!-- Card Preview -->
+                <div class="card-preview-container">
+                    <div class="credit-card" id="cardPreview">
+                        <canvas id="cardCanvas" class="card-background"></canvas>
+                        <canvas id="drawingCanvas"></canvas>
+                        <div class="card-content">
+                            <div>
+                                <div class="card-chip"></div>
+                            </div>
+                            <div>
+                                <div class="card-number" id="cardNumberDisplay">5412 7512 3456 7890</div>
+                                <div class="card-details">
+                                    <div class="card-holder">
+                                        <div class="card-label">Card Holder</div>
+                                        <div class="card-value" id="cardHolderDisplay">YOUR NAME</div>
+                                    </div>
+                                    <div class="card-expiry">
+                                        <div class="card-label">Expires</div>
+                                        <div class="card-value" id="cardExpiryDisplay">12/28</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-logo">nigmo</div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Card Holder Name</label>
+                        <input type="text" id="cardHolderInput" placeholder="YOUR NAME" maxlength="25" oninput="updateCardHolder()">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Background Gradient Presets</label>
+                        <div class="gradient-presets">
+                            <div class="gradient-preset active" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)" onclick="setGradient('linear-gradient(135deg, #667eea 0%, #764ba2 100%)', this)"></div>
+                            <div class="gradient-preset" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" onclick="setGradient('linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', this)"></div>
+                            <div class="gradient-preset" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" onclick="setGradient('linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', this)"></div>
+                            <div class="gradient-preset" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" onclick="setGradient('linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)', this)"></div>
+                            <div class="gradient-preset" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)" onclick="setGradient('linear-gradient(135deg, #fa709a 0%, #fee140 100%)', this)"></div>
+                            <div class="gradient-preset" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%)" onclick="setGradient('linear-gradient(135deg, #30cfd0 0%, #330867 100%)', this)"></div>
+                            <div class="gradient-preset" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" onclick="setGradient('linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)', this)"></div>
+                            <div class="gradient-preset" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)" onclick="setGradient('linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)', this)"></div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Upload Custom Image</label>
+                        <input type="file" id="imageUpload" accept="image/*" onchange="uploadImage()">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Draw on Card</label>
+                        <div class="color-brush-controls">
+                            <div class="color-picker-group">
+                                <label>Brush Color</label>
+                                <input type="color" id="brushColor" value="#ffffff">
+                            </div>
+                            <div class="brush-size-group">
+                                <label>Brush Size: <span id="brushSizeValue">5</span>px</label>
+                                <input type="range" id="brushSize" min="1" max="20" value="5" oninput="updateBrushSize()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn action-btn-danger" onclick="clearDrawing()">Clear Drawing</button>
+                        <button class="action-btn action-btn-secondary" onclick="regenerateCardNumber()">New Card Number</button>
+                        <button class="action-btn action-btn-primary" onclick="downloadCard()" style="grid-column: 1 / -1;">Save Card Image</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Card Designer Variables
+        let bgCanvas, bgCtx, drawCanvas, drawCtx;
+        let isDrawing = false;
+        let currentGradient = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+
+        // Initialize canvas when modal opens
+        function initCanvas() {
+            const card = document.getElementById('cardPreview');
+
+            // Background canvas
+            bgCanvas = document.getElementById('cardCanvas');
+            bgCanvas.width = card.offsetWidth;
+            bgCanvas.height = card.offsetHeight;
+            bgCtx = bgCanvas.getContext('2d');
+
+            // Drawing canvas
+            drawCanvas = document.getElementById('drawingCanvas');
+            drawCanvas.width = card.offsetWidth;
+            drawCanvas.height = card.offsetHeight;
+            drawCtx = drawCanvas.getContext('2d');
+
+            // Set initial gradient
+            applyGradientToCanvas();
+
+            // Drawing event listeners
+            drawCanvas.addEventListener('mousedown', startDrawing);
+            drawCanvas.addEventListener('mousemove', draw);
+            drawCanvas.addEventListener('mouseup', stopDrawing);
+            drawCanvas.addEventListener('mouseout', stopDrawing);
+
+            // Touch events for mobile
+            drawCanvas.addEventListener('touchstart', handleTouch);
+            drawCanvas.addEventListener('touchmove', handleTouch);
+            drawCanvas.addEventListener('touchend', stopDrawing);
+        }
+
+        function applyGradientToCanvas() {
+            const gradientMatch = currentGradient.match(/linear-gradient\(([^,]+),\s*([^\s]+)\s+[^,]+,\s*([^\s]+)\s+[^)]+\)/);
+            if (gradientMatch) {
+                const angle = gradientMatch[1].trim();
+                const color1 = gradientMatch[2];
+                const color2 = gradientMatch[3];
+
+                let gradient;
+                if (angle.includes('deg')) {
+                    const deg = parseInt(angle);
+                    const rad = (deg - 90) * Math.PI / 180;
+                    const x0 = bgCanvas.width / 2 - Math.cos(rad) * bgCanvas.width / 2;
+                    const y0 = bgCanvas.height / 2 - Math.sin(rad) * bgCanvas.height / 2;
+                    const x1 = bgCanvas.width / 2 + Math.cos(rad) * bgCanvas.width / 2;
+                    const y1 = bgCanvas.height / 2 + Math.sin(rad) * bgCanvas.height / 2;
+                    gradient = bgCtx.createLinearGradient(x0, y0, x1, y1);
+                } else {
+                    gradient = bgCtx.createLinearGradient(0, 0, bgCanvas.width, bgCanvas.height);
+                }
+
+                gradient.addColorStop(0, color1);
+                gradient.addColorStop(1, color2);
+                bgCtx.fillStyle = gradient;
+                bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+            }
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = drawCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            drawCtx.beginPath();
+            drawCtx.moveTo(x, y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const rect = drawCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            drawCtx.strokeStyle = document.getElementById('brushColor').value;
+            drawCtx.lineWidth = document.getElementById('brushSize').value;
+            drawCtx.lineCap = 'round';
+            drawCtx.lineTo(x, y);
+            drawCtx.stroke();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 'mousemove', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            drawCanvas.dispatchEvent(mouseEvent);
+        }
+
+        function setGradient(gradient, element) {
+            currentGradient = gradient;
+            document.getElementById('cardPreview').style.background = gradient;
+
+            // Make sure canvas is initialized
+            if (bgCanvas && bgCtx) {
+                applyGradientToCanvas();
+            }
+
+            // Update active state
+            document.querySelectorAll('.gradient-preset').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function uploadImage() {
+            const file = document.getElementById('imageUpload').files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        bgCtx.drawImage(img, 0, 0, bgCanvas.width, bgCanvas.height);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function clearDrawing() {
+            drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+        }
+
+        function updateBrushSize() {
+            const size = document.getElementById('brushSize').value;
+            document.getElementById('brushSizeValue').textContent = size;
+        }
+
+        function updateCardHolder() {
+            const name = document.getElementById('cardHolderInput').value.toUpperCase() || 'YOUR NAME';
+            document.getElementById('cardHolderDisplay').textContent = name;
+        }
+
+        function generateCardNumber() {
+            // Generate a realistic-looking card number (Mastercard format starting with 5)
+            let cardNumber = '5412 ';
+            for (let i = 0; i < 3; i++) {
+                cardNumber += Math.floor(1000 + Math.random() * 9000);
+                if (i < 2) cardNumber += ' ';
+            }
+            return cardNumber;
+        }
+
+        function regenerateCardNumber() {
+            const newNumber = generateCardNumber();
+            document.getElementById('cardNumberDisplay').textContent = newNumber;
+        }
+
+        function downloadCard() {
+            if (!bgCanvas || !drawCanvas) {
+                alert('Please wait for the card to load before saving.');
+                return;
+            }
+
+            const card = document.getElementById('cardPreview');
+            const scaleFactor = 2;
+
+            // Create a temporary canvas
+            const tempCanvas = document.createElement('canvas');
+            const width = card.offsetWidth;
+            const height = card.offsetHeight;
+
+            tempCanvas.width = width * scaleFactor;
+            tempCanvas.height = height * scaleFactor;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            // Scale for better quality
+            tempCtx.scale(scaleFactor, scaleFactor);
+
+            // Create rounded rectangle clipping path
+            tempCtx.save();
+            tempCtx.beginPath();
+            tempCtx.roundRect(0, 0, width, height, 20);
+            tempCtx.clip();
+
+            // Draw background gradient/image
+            tempCtx.drawImage(bgCanvas, 0, 0, width, height);
+
+            // Draw user drawings
+            tempCtx.drawImage(drawCanvas, 0, 0, width, height);
+
+            tempCtx.restore();
+
+            // Now draw text elements on top
+            tempCtx.save();
+            tempCtx.beginPath();
+            tempCtx.roundRect(0, 0, width, height, 20);
+            tempCtx.clip();
+
+            // Shadow for text
+            tempCtx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            tempCtx.shadowBlur = 4;
+            tempCtx.shadowOffsetX = 0;
+            tempCtx.shadowOffsetY = 2;
+
+            // Draw chip
+            const chipGradient = tempCtx.createLinearGradient(30, 30, 80, 70);
+            chipGradient.addColorStop(0, '#f4e5c2');
+            chipGradient.addColorStop(1, '#d4af37');
+            tempCtx.fillStyle = chipGradient;
+            tempCtx.shadowBlur = 0;
+            tempCtx.beginPath();
+            tempCtx.roundRect(30, 30, 50, 40, 8);
+            tempCtx.fill();
+
+            // Reset shadow
+            tempCtx.shadowBlur = 4;
+
+            // Draw card number
+            tempCtx.fillStyle = 'white';
+            tempCtx.font = '600 22px "Space Grotesk", sans-serif';
+            const cardNumber = document.getElementById('cardNumberDisplay').textContent;
+            tempCtx.fillText(cardNumber, 30, height / 2 + 15);
+
+            // Draw card holder
+            tempCtx.font = '300 10px "Space Grotesk", sans-serif';
+            tempCtx.fillText('CARD HOLDER', 30, height - 50);
+            tempCtx.font = '600 16px "Space Grotesk", sans-serif';
+            const cardHolder = document.getElementById('cardHolderDisplay').textContent;
+            tempCtx.fillText(cardHolder, 30, height - 30);
+
+            // Draw expiry
+            tempCtx.font = '300 10px "Space Grotesk", sans-serif';
+            const expiryX = width / 2 + 20;
+            tempCtx.fillText('EXPIRES', expiryX, height - 50);
+            tempCtx.font = '600 16px "Space Grotesk", sans-serif';
+            const expiry = document.getElementById('cardExpiryDisplay').textContent;
+            tempCtx.fillText(expiry, expiryX, height - 30);
+
+            // Draw logo
+            tempCtx.font = '700 20px "Space Grotesk", sans-serif';
+            tempCtx.fillText('nigmo', width - 80, 50);
+
+            tempCtx.restore();
+
+            // Download
+            const link = document.createElement('a');
+            link.download = `nigmo-card-${Date.now()}.png`;
+            link.href = tempCanvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Open card designer
+        function openCardDesigner() {
+            document.getElementById('cardDesignerModal').classList.add('active');
+            setTimeout(() => {
+                initCanvas();
+                regenerateCardNumber(); // Generate initial card number
+            }, 150); // Wait for modal to render
+        }
+
+        // Close card designer
+        function closeCardDesigner() {
+            document.getElementById('cardDesignerModal').classList.remove('active');
+        }
+
+        // Connect wallet button opens card designer
+        document.getElementById('connectWallet').addEventListener('click', function(e) {
+            e.preventDefault();
+            openCardDesigner();
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('cardDesignerModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCardDesigner();
+            }
+        });
+
+        // RoundRect polyfill for older browsers
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.quadraticCurveTo(x + width, y, x + width, y + radius);
+                this.lineTo(x + width, y + height - radius);
+                this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                this.lineTo(x + radius, y + height);
+                this.quadraticCurveTo(x, y + height, x, y + height - radius);
+                this.lineTo(x, y + radius);
+                this.quadraticCurveTo(x, y, x + radius, y);
+                this.closePath();
+            };
+        }
+    </script>
+</body>
+</html>
