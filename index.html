@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nigmo - Digital Currency for Everyone</title>
+    <link rel="icon" type="image/jpeg" href="nigmo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -191,7 +192,7 @@
 
         .hero-image img {
             width: 100%;
-            max-width: 500px;
+            max-width: 350px;
             height: auto;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -574,6 +575,17 @@
             font-weight: 700;
             z-index: 4;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .card-logo-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Drawing Canvas */
@@ -797,7 +809,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="top">
         <a href="#" class="logo">nigmo</a>
         <nav>
             <a href="#">Send & Receive</a>
@@ -805,7 +817,7 @@
             <a href="#">Nigmo for Business</a>
             <a href="#">Help Center</a>
             <div class="nav-buttons">
-                <a href="#" class="btn btn-primary" id="connectWallet">Connect Wallet</a>
+                <a href="#" class="btn btn-primary" id="connectWallet">Create Card</a>
             </div>
         </nav>
     </header>
@@ -813,8 +825,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Pay friends. Pay for everything.</h1>
-            <p>Easily send money to your friends and pay for everything* you want online, in-store, and in apps with your Nigmo account.</p>
+            <h1>Pay niggas. Pay for everything.</h1>
+            <p>Easily send money to your niggas and pay for everything* you want online, in-store, and in apps with your Nigmo account. Powered by Solana and Nigmo Solutions.</p>
 
             <div class="qr-section">
                 <div class="qr-content">
@@ -824,7 +836,7 @@
                     <div class="qr-text">
                         <h3>Scan to download the Nigmo app</h3>
                         <div class="divider">or</div>
-                        <a href="#">Create an account</a>
+                        <a href="#" onclick="openCardDesigner(); return false;">Create a card</a>
                     </div>
                 </div>
             </div>
@@ -834,7 +846,7 @@
 
         <div class="hero-image">
             <img src="nigmo.jpg" alt="Nigmo Coin">
-            <div class="ca-text">CA: 0x1234567890abcdef</div>
+            <div class="ca-text" onclick="copyCA()" style="cursor: pointer;">................................pump</div>
         </div>
     </section>
 
@@ -849,7 +861,7 @@
                 <div class="feature-content">
                     <h3>The Nigmo Debit Card.</h3>
                     <p>With the Nigmo Debit Card, you can instantly pay for whatever you want with the money in your Nigmo balance and earn up to 5% cash back* from some of your fave brands. There is no monthly fee or minimum balance.</p>
-                    <a href="#">Get the Nigmo Debit Card</a>
+                    <a href="#" onclick="openCardDesigner(); return false;">Get the Nigmo Debit Card</a>
                 </div>
             </div>
 
@@ -858,7 +870,6 @@
                 <div class="feature-content">
                     <h3>Checkout with Nigmo.</h3>
                     <p>Connect your Nigmo account to thousands of apps and websites and quickly check out using your Nigmo balance* or a linked payment method.</p>
-                    <a href="#">Ways to pay</a>
                 </div>
             </div>
 
@@ -867,7 +878,6 @@
                 <div class="feature-content">
                     <h3>The Nigmo Credit Card.</h3>
                     <p>Earn up to 3% cash back on eligible purchases with the Nigmo Visa® Credit Card.* There's no annual fee,* no limit to the cash back you can earn, and no impact to your credit score if declined.*</p>
-                    <a href="#">Apply now</a>
                 </div>
             </div>
         </div>
@@ -879,7 +889,7 @@
             <div class="crypto-content">
                 <h2>Buy crypto</h2>
                 <p>Get started with as little as $1.‡ Buy, track, transfer, and sell crypto through the Nigmo app.</p>
-                <a href="#" class="btn btn-outline">Learn more</a>
+                <a href="#top" class="btn btn-outline" onclick="smoothScrollToTop(event)">Learn more</a>
                 <p class="disclaimer">‡ Minimum purchase amount may vary.</p>
             </div>
 
@@ -954,7 +964,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-logo">nigmo</div>
+                        <div class="card-logo">
+                            nigmo
+                            <img src="nigmo.jpg" alt="Nigmo" class="card-logo-icon">
+                        </div>
                     </div>
                 </div>
 
@@ -1013,6 +1026,7 @@
         let bgCanvas, bgCtx, drawCanvas, drawCtx;
         let isDrawing = false;
         let currentGradient = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        let logoImageData = null;
 
         // Initialize canvas when modal opens
         function initCanvas() {
@@ -1033,6 +1047,9 @@
             // Set initial gradient
             applyGradientToCanvas();
 
+            // Load logo image data
+            loadLogoImageData();
+
             // Drawing event listeners
             drawCanvas.addEventListener('mousedown', startDrawing);
             drawCanvas.addEventListener('mousemove', draw);
@@ -1043,6 +1060,20 @@
             drawCanvas.addEventListener('touchstart', handleTouch);
             drawCanvas.addEventListener('touchmove', handleTouch);
             drawCanvas.addEventListener('touchend', stopDrawing);
+        }
+
+        // Load logo image as data URL to avoid CORS issues
+        function loadLogoImageData() {
+            const img = new Image();
+            img.onload = function() {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = img.width;
+                tempCanvas.height = img.height;
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.drawImage(img, 0, 0);
+                logoImageData = img;
+            };
+            img.src = 'nigmo.jpg';
         }
 
         function applyGradientToCanvas() {
@@ -1247,7 +1278,7 @@
             const expiry = document.getElementById('cardExpiryDisplay').textContent;
             tempCtx.fillText(expiry, expiryX, height - 30);
 
-            // Draw logo
+            // Draw logo text
             tempCtx.font = '700 20px "Space Grotesk", sans-serif';
             tempCtx.fillText('nigmo', width - 80, 50);
 
@@ -1274,7 +1305,34 @@
             document.getElementById('cardDesignerModal').classList.remove('active');
         }
 
-        // Connect wallet button opens card designer
+        // Copy CA to clipboard
+        function copyCA() {
+            const caText = '................................pump';
+            navigator.clipboard.writeText(caText).then(() => {
+                const caElement = event.target;
+                const originalText = caElement.textContent;
+                caElement.textContent = 'Copied!';
+                caElement.style.background = '#43e97b';
+
+                setTimeout(() => {
+                    caElement.textContent = originalText;
+                    caElement.style.background = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        // Smooth scroll to top
+        function smoothScrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Create Card button opens card designer
         document.getElementById('connectWallet').addEventListener('click', function(e) {
             e.preventDefault();
             openCardDesigner();
